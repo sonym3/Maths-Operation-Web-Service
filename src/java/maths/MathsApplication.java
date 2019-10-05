@@ -5,6 +5,7 @@
  */
 package maths;
 
+import javax.json.JsonObject;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -14,6 +15,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import net.sf.json.JSONObject;
 
 /**
  * REST Web Service
@@ -70,5 +72,20 @@ public class MathsApplication {
      return "The resut is :" + result;
     }
 
-    
+    @GET
+    @Path("student&{value1}&{value2}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getText3(@PathParam("value1") String fname,
+            @PathParam("value2") String lname) {
+        //TODO return proper representation object
+        JSONObject mainObject= new JSONObject();
+        
+        mainObject.accumulate("id", 1234);
+        mainObject.accumulate("fname",fname );
+        mainObject.accumulate("lname", lname);
+        mainObject.accumulate("GPA", 50.6);
+                
+                
+        return mainObject.toString();
+    }
 }
