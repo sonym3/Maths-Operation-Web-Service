@@ -50,6 +50,7 @@ public class MathsApplication {
                  
             }
             
+            
         }
         else if(v1.equalsIgnoreCase("gp")){
             int curr_term; 
